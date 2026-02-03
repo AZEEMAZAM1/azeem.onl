@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azeem - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        header {
+            text-align: center;
+            padding: 4rem 0;
+        }
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #e94560, #533483);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle {
+            font-size: 1.3rem;
+            color: #a0a0a0;
+            margin-bottom: 2rem;
+        }
+        .links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .links a {
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, #e94560, #533483);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .links a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.3);
+        }
+        .section {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+        }
+        h2 {
+            color: #e94560;
+            margin-bottom: 1.5rem;
+        }
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .skill {
+            padding: 0.5rem 1rem;
+            background: rgba(233, 69, 96, 0.2);
+            border-radius: 20px;
+            border: 1px solid #e94560;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Azeem Azam</h1>
+            <p class="subtitle">IT Student | Web Developer | Network Enthusiast</p>
+            <div class="links">
+                <a href="https://github.com/AZEEMAZAM1" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/" target="_blank">LinkedIn</a>
+                <a href="mailto:contact@azeem.onl">Contact</a>
+            </div>
+        </header>
+        
+        <section class="section">
+            <h2>About Me</h2>
+            <p>Welcome to my portfolio! I am a passionate IT student specializing in web development and networking. Currently pursuing CCNA and CompTIA A+ certifications while building full-stack applications.</p>
+        </section>
+        
+        <section class="section">
+            <h2>Skills</h2>
+            <div class="skills">
+                <span class="skill">JavaScript</span>
+                <span class="skill">React</span>
+                <span class="skill">HTML/CSS</span>
+                <span class="skill">Python</span>
+                <span class="skill">Networking</span>
+                <span class="skill">Cisco</span>
+                <span class="skill">Git/GitHub</span>
+                <span class="skill">Firebase</span>
+            </div>
+        </section>
+        
+        <footer>
+            <p>&copy; 2026 Azeem Azam. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
