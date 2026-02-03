@@ -12,7 +12,7 @@
         }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            background: #000;
             min-height: 100vh;
             color: #fff;
         }
@@ -28,13 +28,11 @@
         h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
-            background: linear-gradient(90deg, #e94560, #533483);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #fff;
         }
         .subtitle {
             font-size: 1.3rem;
-            color: #a0a0a0;
+            color: #888;
             margin-bottom: 2rem;
         }
         .links {
@@ -45,24 +43,25 @@
         }
         .links a {
             padding: 0.8rem 2rem;
-            background: linear-gradient(135deg, #e94560, #533483);
-            color: #fff;
+            background: #fff;
+            color: #000;
             text-decoration: none;
             border-radius: 30px;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s, background 0.3s;
         }
         .links a:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.3);
+            background: #ccc;
         }
         .section {
             margin: 3rem 0;
             padding: 2rem;
-            background: rgba(255, 255, 255, 0.05);
+            background: #111;
             border-radius: 15px;
+            border: 1px solid #333;
         }
         h2 {
-            color: #e94560;
+            color: #fff;
             margin-bottom: 1.5rem;
         }
         .skills {
@@ -72,9 +71,10 @@
         }
         .skill {
             padding: 0.5rem 1rem;
-            background: rgba(233, 69, 96, 0.2);
+            background: #222;
             border-radius: 20px;
-            border: 1px solid #e94560;
+            border: 1px solid #444;
+            color: #fff;
         }
         footer {
             text-align: center;
