@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-:root{--primary:#0a66c2;--accent:#00b4d8;--bg:#0a0a0a;--card:#111;--card-hover:#1a1a1a;--text:#e0e0e0;--text-dim:#888;--border:#222;--gradient:linear-gradient(135deg,#0a66c2,#00b4d8)}
+:root{---primary:#8b5cf6;--accent:#ec4899;--bg:#0f0a1e;--card:#1a1333;--card-hover:#251a40;--text:#f0e7ff;--text-dim:#b19cd9;--border:#2d1b69;--gradient:linear-gradient(135deg,#8b5cf6,#ec4899,#3b82f6)}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
@@ -40,7 +40,9 @@ nav{position:fixed;top:0;width:100%;background:rgba(10,10,10,0.85);backdrop-filt
 .hero-avatar{width:280px;height:280px;border-radius:30px;background:var(--gradient);display:flex;align-items:center;justify-content:center;font-size:6rem;font-weight:800;color:#fff;box-shadow:0 20px 60px rgba(0,180,216,0.2);position:relative}
 .hero-avatar::after{content:'';position:absolute;inset:-3px;border-radius:32px;background:var(--gradient);z-index:-1;opacity:0.3;filter:blur(20px)}
 .hero-stats{display:flex;gap:2rem;margin-top:2.5rem}
-.stat{text-align:center}
+.stat{text-align:center;border:1px solid var(--border);background:var(--card);padding:1rem;border-radius:12px;transition:all 0.3s}
+  .stat-link{text-decoration:none;color:inherit;transition:all 0.3s}
+  .stat-link:hover .stat{transform:translateY(-4px);border-color:var(--accent)}
 .stat-num{font-size:1.8rem;font-weight:800;color:#fff}
 .stat-label{font-size:0.75rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px}
 
@@ -164,9 +166,9 @@ footer .social a:hover{color:var(--accent)}
 <a href="https://linkedin.com/in/muhammad-azeem5" class="btn btn-outline" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
 </div>
 <div class="hero-stats">
-<div class="stat"><div class="stat-num">74+</div><div class="stat-label">Repos</div></div>
-<div class="stat"><div class="stat-num">500+</div><div class="stat-label">Connections</div></div>
-<div class="stat"><div class="stat-num">3+</div><div class="stat-label">Projects</div></div>
+<a href="https://github.com/AZEEMAZAM1?tab=repositories" target="_blank" class="stat-link"</a>><div class="stat"><div class="stat-num">74+</div><div class="stat-label">Repos</div></div>
+<a href="https://linkedin.com/in/muhammad-azeem5" target="_blank" class="stat-link"><div class="s</a>tat"><div class="stat-num">500+</div><div class="stat-label">Connections</div></div>
+<a href="#projects" class="stat-link"><div class="stat"><div class="stat-num">3+</div><div c</a>lass="stat-label">Projects</div></div>
 </div>
 </div>
 <div class="hero-visual animate delay-2">
