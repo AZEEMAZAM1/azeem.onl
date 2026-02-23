@@ -1,321 +1,441 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Azeem - Portfolio</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231a1a2e'/%3E%3Ctext x='50' y='55' font-family='Arial,sans-serif' font-size='45' font-weight='bold' text-anchor='middle' dominant-baseline='middle'%3E%3Ctspan fill='%237B68EE'%3EM%3C/tspan%3E%3Ctspan fill='%2300D4AA'%3EA%3C/tspan%3E%3C/text%3E%3Ccircle cx='85' cy='20' r='8' fill='%2300D4AA'/%3E%3C/svg%3E">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Azeem | Full Stack Developer & AI Engineer</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230f172a'/%3E%3Ctext x='50' y='55' font-family='Arial,sans-serif' font-size='45' font-weight='bold' text-anchor='middle' dominant-baseline='middle'%3E%3Ctspan fill='%2338bdf8'%3EM%3C/tspan%3E%3Ctspan fill='%23818cf8'%3EA%3C/tspan%3E%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root {
+--bg-primary: #0f172a;
+--bg-secondary: #1e293b;
+--bg-card: #1e293b;
+--text-primary: #f1f5f9;
+--text-secondary: #94a3b8;
+--accent-blue: #38bdf8;
+--accent-purple: #818cf8;
+--accent-cyan: #22d3ee;
+--accent-green: #34d399;
+--gradient-1: linear-gradient(135deg, #38bdf8, #818cf8);
+--gradient-2: linear-gradient(135deg, #818cf8, #c084fc);
+--gradient-3: linear-gradient(135deg, #22d3ee, #38bdf8);
+--glass: rgba(30, 41, 59, 0.8);
+--border: rgba(56, 189, 248, 0.1);
+--shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body { font-family:'Inter',sans-serif; background:var(--bg-primary); color:var(--text-primary); line-height:1.7; overflow-x:hidden; }
+::selection { background:var(--accent-blue); color:var(--bg-primary); }
+::-webkit-scrollbar { width:8px; }
+::-webkit-scrollbar-track { background:var(--bg-primary); }
+::-webkit-scrollbar-thumb { background:var(--accent-blue); border-radius:4px; }
+/* Navbar */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:15px 0;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);}
+.navbar.scrolled{background:rgba(15,23,42,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);box-shadow:0 4px 30px rgba(0,0,0,0.3);}
+.nav-container{max-width:1200px;margin:0 auto;padding:0 30px;display:flex;justify-content:space-between;align-items:center;}
+.nav-logo{font-size:1.5rem;font-weight:800;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;letter-spacing:-0.5px;}
+.nav-links{display:flex;gap:35px;list-style:none;}
+.nav-links a{color:var(--text-secondary);text-decoration:none;font-weight:500;font-size:0.95rem;transition:all 0.3s;position:relative;}
+.nav-links a:hover,.nav-links a.active{color:var(--accent-blue);}
+.nav-links a::after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:var(--gradient-1);transition:width 0.3s;border-radius:1px;}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+.hamburger{display:none;flex-direction:column;cursor:pointer;gap:5px;}
+.hamburger span{width:25px;height:2px;background:var(--text-primary);transition:0.3s;border-radius:2px;}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.hamburger.active span:nth-child(2){opacity:0;}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+/* Hero */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(56,189,248,0.08) 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(129,140,252,0.08) 0%,transparent 50%),radial-gradient(ellipse at 50% 80%,rgba(34,211,238,0.05) 0%,transparent 50%);}
+.hero-particles{position:absolute;inset:0;overflow:hidden;}
+.particle{position:absolute;width:3px;height:3px;background:var(--accent-blue);border-radius:50%;opacity:0;animation:float-particle 8s infinite;}
+@keyframes float-particle{0%{opacity:0;transform:translateY(100vh) scale(0);}10%{opacity:0.6;}90%{opacity:0.6;}100%{opacity:0;transform:translateY(-10vh) scale(1);}}
+.hero-content{max-width:1200px;margin:0 auto;padding:0 30px;width:100%;position:relative;z-index:2;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.2);border-radius:50px;font-size:0.85rem;color:var(--accent-blue);margin-bottom:25px;animation:fadeInUp 0.8s ease;}
+.hero-badge .dot{width:8px;height:8px;background:var(--accent-green);border-radius:50%;animation:pulse-dot 2s infinite;}
+@keyframes pulse-dot{0%,100%{opacity:1;}50%{opacity:0.4;}}
+.hero h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:900;line-height:1.1;margin-bottom:20px;letter-spacing:-2px;animation:fadeInUp 0.8s ease 0.1s both;}
+.hero h1 .gradient-text{background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero-subtitle{font-size:clamp(1rem,2vw,1.3rem);color:var(--text-secondary);max-width:600px;margin-bottom:40px;animation:fadeInUp 0.8s ease 0.2s both;}
+.hero-cta{display:flex;gap:15px;flex-wrap:wrap;animation:fadeInUp 0.8s ease 0.3s both;}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;border-radius:12px;font-weight:600;font-size:0.95rem;text-decoration:none;transition:all 0.3s cubic-bezier(0.4,0,0.2,1);cursor:pointer;border:none;font-family:inherit;}
+.btn-primary{background:var(--gradient-1);color:var(--bg-primary);box-shadow:0 4px 15px rgba(56,189,248,0.3);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(56,189,248,0.4);}
+.btn-outline{background:transparent;color:var(--accent-blue);border:1.5px solid rgba(56,189,248,0.3);}
+.btn-outline:hover{background:rgba(56,189,248,0.1);border-color:var(--accent-blue);transform:translateY(-2px);}
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #F0F4FF;
-            color: #2D3748;
-            line-height: 1.6;
-        }
+/* Sections */
+.section{padding:100px 0;position:relative;}
+.container{max-width:1200px;margin:0 auto;padding:0 30px;}
+.section-header{text-align:center;margin-bottom:60px;}
+.section-label{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.15);border-radius:50px;font-size:0.8rem;color:var(--accent-blue);font-weight:600;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:20px;}
+.section-title{font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-1px;margin-bottom:15px;}
+.section-desc{color:var(--text-secondary);font-size:1.05rem;max-width:600px;margin:0 auto;}
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
+/* Skills */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;}
+.skill-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:30px;transition:all 0.4s;position:relative;overflow:hidden;}
+.skill-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gradient-1);transform:scaleX(0);transition:transform 0.4s;transform-origin:left;}
+.skill-card:hover{transform:translateY(-5px);border-color:rgba(56,189,248,0.3);box-shadow:0 20px 40px rgba(0,0,0,0.3);}
+.skill-card:hover::before{transform:scaleX(1);}
+.skill-icon{width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:20px;}
+.skill-icon.blue{background:rgba(56,189,248,0.15);color:var(--accent-blue);}
+.skill-icon.purple{background:rgba(129,140,252,0.15);color:var(--accent-purple);}
+.skill-icon.cyan{background:rgba(34,211,238,0.15);color:var(--accent-cyan);}
+.skill-icon.green{background:rgba(52,211,153,0.15);color:var(--accent-green);}
+.skill-card h3{font-size:1.15rem;font-weight:700;margin-bottom:10px;}
+.skill-card p{color:var(--text-secondary);font-size:0.9rem;line-height:1.6;}
+.skill-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:15px;}
+.skill-tag{padding:4px 12px;background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.12);border-radius:20px;font-size:0.75rem;color:var(--accent-blue);font-weight:500;}
+/* Project Cards */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:30px;}
+.project-card{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:all 0.4s;}
+.project-card:hover{transform:translateY(-8px);border-color:rgba(56,189,248,0.3);box-shadow:0 25px 50px rgba(0,0,0,0.3);}
+.project-header{padding:25px 30px 0;}
+.project-num{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;letter-spacing:0.5px;}
+.project-num.p1{background:rgba(56,189,248,0.15);color:var(--accent-blue);}
+.project-num.p2{background:rgba(129,140,252,0.15);color:var(--accent-purple);}
+.project-num.p3{background:rgba(34,211,238,0.15);color:var(--accent-cyan);}
+.project-body{padding:20px 30px 30px;}
+.project-card h3{font-size:1.4rem;font-weight:700;margin-bottom:10px;letter-spacing:-0.3px;}
+.project-tech{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px;}
+.tech-pill{padding:4px 12px;background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.12);border-radius:20px;font-size:0.75rem;color:var(--accent-blue);font-weight:500;}
+.project-desc{color:var(--text-secondary);font-size:0.92rem;line-height:1.7;margin-bottom:20px;}
+.project-stats{display:flex;gap:25px;padding:20px;background:rgba(56,189,248,0.04);border-radius:12px;margin-bottom:20px;}
+.stat{display:flex;flex-direction:column;}
+.stat-label{font-size:0.75rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:1px;font-weight:600;}
+.stat-value{font-size:1.5rem;font-weight:800;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.stat-sub{font-size:0.8rem;color:var(--text-secondary);margin-top:2px;}
+.project-links{display:flex;gap:12px;}
+.project-link{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:10px;font-size:0.85rem;font-weight:600;text-decoration:none;transition:all 0.3s;}
+.project-link.primary{background:var(--gradient-1);color:var(--bg-primary);}
+.project-link.primary:hover{box-shadow:0 5px 20px rgba(56,189,248,0.3);transform:translateY(-2px);}
+.project-link.secondary{background:rgba(56,189,248,0.1);color:var(--accent-blue);border:1px solid rgba(56,189,248,0.2);}
+.project-link.secondary:hover{background:rgba(56,189,248,0.2);transform:translateY(-2px);}
+/* GitHub Section */
+.github-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:15px;margin-bottom:30px;}
+.github-grid img{width:100%;border-radius:12px;border:1px solid var(--border);transition:all 0.3s;}
+.github-grid img:hover{border-color:rgba(56,189,248,0.3);transform:scale(1.02);}
+.github-contrib{text-align:center;margin-bottom:30px;}
+.github-contrib img{max-width:100%;border-radius:12px;border:1px solid var(--border);}
 
-        header {
-            text-align: center;
-            padding: 60px 0;
-            background: #F0F4FF;
-            box-shadow: 0 2px 10px rgba(45, 55, 72, 0.08);
-            margin-bottom: 60px;
-        }
+/* Footer */
+footer{background:var(--bg-secondary);border-top:1px solid var(--border);padding:60px 0 30px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px;}
+.footer-brand p{color:var(--text-secondary);font-size:0.95rem;margin-top:15px;max-width:350px;line-height:1.7;}
+.footer-heading{font-size:0.85rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-secondary);margin-bottom:18px;font-weight:600;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:12px;}
+.footer-links a{color:var(--text-secondary);text-decoration:none;font-size:0.95rem;transition:all 0.3s;display:flex;align-items:center;gap:8px;}
+.footer-links a:hover{color:var(--accent-blue);transform:translateX(5px);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:30px;border-top:1px solid var(--border);}
+.footer-bottom p{color:var(--text-secondary);font-size:0.85rem;}
+.social-links{display:flex;gap:15px;}
+.social-link{width:40px;height:40px;border-radius:10px;background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.15);display:flex;align-items:center;justify-content:center;color:var(--accent-blue);text-decoration:none;transition:all 0.3s;font-size:1rem;}
+.social-link:hover{background:var(--accent-blue);color:var(--bg-primary);transform:translateY(-3px);box-shadow:0 5px 15px rgba(56,189,248,0.3);}
 
-        h1 {
-            font-size: 3rem;
-            color: #2D3748;
-            margin-bottom: 10px;
-        }
+/* Scroll Animations */
+.reveal{opacity:0;transform:translateY(40px);transition:all 0.8s cubic-bezier(0.4,0,0.2,1);}
+.reveal.active{opacity:1;transform:translateY(0);}
+.reveal-delay-1{transition-delay:0.1s;}
+.reveal-delay-2{transition-delay:0.2s;}
+.reveal-delay-3{transition-delay:0.3s;}
 
-        .subtitle {
-            font-size: 1.2rem;
-            color: #5B7BA5;
-            margin-bottom: 30px;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            color: #2D3748;
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-
-        .project-card {
-            background: #F0F4FF;
-            border-radius: 12px;
-            padding: 35px;
-            box-shadow: 0 5px 20px rgba(45, 55, 72, 0.08);
-            transition: transform 0.3s ease;
-            border: 1px solid #C8D8F0;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .project-number {
-            display: inline-block;
-            background: #4A90D9;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        .project-card h3 {
-            font-size: 1.8rem;
-            color: #2D3748;
-            margin-bottom: 15px;
-        }
-
-        .project-tech {
-            color: #4A90D9;
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-
-        .project-description {
-            color: #4A5568;
-            font-size: 1rem;
-            line-height: 1.8;
-            margin-bottom: 25px;
-        }
-
-        .project-score {
-            background: #E8F0FE;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 25px;
-        }
-
-        .score-label {
-            font-size: 0.9rem;
-            color: #5B7BA5;
-            margin-bottom: 5px;
-        }
-
-        .score-value {
-            font-size: 1.5rem;
-            color: #4A90D9;
-            font-weight: bold;
-        }
-
-        .rank-info {
-            font-size: 0.9rem;
-            color: #4A5568;
-            margin-top: 5px;
-        }
-
-        /* 3D Button Styles */
-        .btn-3d {
-            display: inline-block;
-            padding: 15px 35px;
-            font-size: 1rem;
-            font-weight: bold;
-            text-decoration: none;
-            color: white;
-            background: linear-gradient(to bottom, #4A90D9, #3B7AC4);
-            border: none;
-            border-radius: 8px;
-            box-shadow: 0 6px 0 #3B7AC4, 0 8px 15px rgba(45, 55, 72, 0.2);
-            cursor: pointer;
-            transition: all 0.2s ease;
-            position: relative;
-            top: 0;
-        }
-
-        .btn-3d:hover {
-            background: linear-gradient(to bottom, #7CB3F0, #4A90D9);
-            top: 2px;
-            box-shadow: 0 4px 0 #3B7AC4, 0 6px 12px rgba(45, 55, 72, 0.2);
-        }
-
-        .btn-3d:active {
-            top: 6px;
-            box-shadow: 0 0 0 #3B7AC4, 0 2px 5px rgba(45, 55, 72, 0.2);
-        }
-
-        .btn-secondary {
-            background: linear-gradient(to bottom, #2A3A5E, #1F2A3E);
-            box-shadow: 0 6px 0 #1F2A3E, 0 8px 15px rgba(45, 55, 72, 0.2);
-            margin-left: 15px;
-        }
-
-        .btn-secondary:hover {
-            background: linear-gradient(to bottom, #6BA3E0, #2A3A5E);
-            box-shadow: 0 4px 0 #1F2A3E, 0 6px 12px rgba(45, 55, 72, 0.2);
-        }
-
-        .btn-secondary:active {
-            box-shadow: 0 0 0 #1F2A3E, 0 2px 5px rgba(45, 55, 72, 0.2);
-        }
-
-        .button-group {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            background: #2D3748;
-            color: white;
-            margin-top: 80px;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
-        .contact-item {
-            color: #7CB3F0;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .contact-item:hover {
-            color: #7CB3F0;
-        }
-
-        /* GitHub Activity Section */
-        .github-section {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .github-section img {
-            max-width: 100%;
-            margin: 10px;
-            border-radius: 8px;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-            .section-title {
-                font-size: 1.8rem;
-            }
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            .button-group {
-                flex-direction: column;
-            }
-            .btn-secondary {
-                margin-left: 0;
-            }
-        }
-    </style>
+/* Back to top */
+.back-to-top{position:fixed;bottom:30px;right:30px;width:45px;height:45px;border-radius:12px;background:var(--gradient-1);color:var(--bg-primary);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.1rem;opacity:0;visibility:hidden;transition:all 0.3s;z-index:999;box-shadow:0 5px 20px rgba(56,189,248,0.3);}
+.back-to-top.visible{opacity:1;visibility:visible;}
+.back-to-top:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(56,189,248,0.4);}
+/* Responsive */
+@media(max-width:768px){
+.nav-links{position:fixed;top:0;right:-100%;width:280px;height:100vh;background:var(--bg-secondary);flex-direction:column;padding:80px 30px;gap:25px;transition:right 0.4s;border-left:1px solid var(--border);box-shadow:-10px 0 30px rgba(0,0,0,0.3);}
+.nav-links.open{right:0;}
+.hamburger{display:flex;}
+.hero h1{font-size:2.2rem;letter-spacing:-1px;}
+.projects-grid{grid-template-columns:1fr;}
+.skills-grid{grid-template-columns:1fr;}
+.footer-grid{grid-template-columns:1fr;gap:30px;}
+.footer-bottom{flex-direction:column;gap:15px;text-align:center;}
+.project-stats{flex-direction:column;gap:15px;}
+.github-grid{grid-template-columns:1fr;}
+}
+</style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Muhammad Azeem</h1>
-            <p class="subtitle">Full Stack Developer & Mobile App Engineer | AI/ML Enthusiast</p>
-        </div>
-    </header>
 
-    <div class="container">
-        <h2 class="section-title">Featured Projects</h2>
-        
-        <div class="projects-grid">
-            <div class="project-card">
-                <span class="project-number"> Project 01 </span>
-                <h3>Spaceship Titanic ML Predictor</h3>
-                <p class="project-tech">Python | TensorFlow | Scikit-learn | Machine Learning</p>
-                <p class="project-description">Developed advanced machine learning models to predict passenger transportation outcomes in the Kaggle Spaceship Titanic competition. Implemented multiple classification algorithms including Random Forest, XGBoost, and Neural Networks. Applied comprehensive feature engineering techniques, handled missing data effectively, and performed hyperparameter tuning to optimize model performance.</p>
-                <div class="project-score">
-                    <div class="score-label">Competition Score</div>
-                    <div class="score-value">0.80289</div>
-                    <div class="rank-info">Ranked #694 out of 2,044 teams</div>
-                </div>
-                <div class="button-group">
-                    <a href="#" class="btn-3d">Results Coming Soon</a>
-                    <a href="https://www.kaggle.com/competitions/spaceship-titanic" class="btn-3d btn-secondary">View on Kaggle</a>
-                </div>
-            </div>
+<!-- Navbar -->
+<nav class="navbar" id="navbar">
+<div class="nav-container">
+<a href="#" class="nav-logo">MA</a>
+<ul class="nav-links" id="navLinks">
+<li><a href="#home" class="active">Home</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#github">GitHub</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+<div class="hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open');this.classList.toggle('active')">
+<span></span><span></span><span></span>
+</div>
+</div>
+</nav>
 
-            <div class="project-card">
-                <span class="project-number"> Project 02 </span>
-                <h3>Store Sales Time Series Forecasting</h3>
-                <p class="project-tech">Python | Pandas | Time Series Analysis | Regression</p>
-                <p class="project-description">Created sophisticated time series forecasting models to predict grocery store sales using advanced statistical and machine learning techniques. Analyzed temporal patterns, seasonal trends, and external factors affecting sales. Implemented ARIMA, SARIMA, and gradient boosting models with feature engineering including lag features, rolling statistics, and holiday indicators.</p>
-                <div class="project-score">
-                    <div class="score-label">Baseline Model Score</div>
-                    <div class="score-value">3.10249</div>
-                    <div class="rank-info">Competed among 748 teams</div>
-                </div>
-                <div class="button-group">
-                    <a href="#" class="btn-3d">Results Coming Soon</a>
-                    <a href="https://www.kaggle.com/competitions/store-sales-time-series-forecasting" class="btn-3d btn-secondary">View on Kaggle</a>
-                </div>
-            </div>
+<!-- Hero Section -->
+<section class="hero" id="home">
+<div class="hero-bg"></div>
+<div class="hero-particles" id="particles"></div>
+<div class="hero-content">
+<div class="hero-badge"><span class="dot"></span> Available for opportunities</div>
+<h1>Hi, I'm <span class="gradient-text">Muhammad Azeem</span></h1>
+<p class="hero-subtitle">Full Stack Developer & Mobile App Engineer with a passion for AI/ML. I build beautiful, performant web and mobile applications that solve real-world problems.</p>
+<div class="hero-cta">
+<a href="#projects" class="btn btn-primary"><i class="fas fa-rocket"></i> View Projects</a>
+<a href="#contact" class="btn btn-outline"><i class="fas fa-paper-plane"></i> Get In Touch</a>
+</div>
+</div>
+</section>
 
-            <div class="project-card">
-                <span class="project-number"> Project 03 </span>
-                <h3>Santa 2025 - Christmas Tree Packing</h3>
-                <p class="project-tech">Python | C++ | Simulated Annealing | Optimization Algorithms</p>
-                <p class="project-description">Tackled a complex combinatorial optimization problem in this prestigious Kaggle Featured competition involving Christmas tree packing challenges. Developed and implemented advanced simulated annealing algorithms with custom cooling schedules and neighborhood search strategies. Created visualization tools for performance tracking and score analytics.</p>
-                <div class="project-score">
-                    <div class="score-label">Best Optimization Score</div>
-                    <div class="score-value">70.66</div>
-                    <div class="rank-info">Competed among 3,357 teams</div>
-                </div>
-                <div class="button-group">
-                    <a href="#" class="btn-3d">Results Coming Soon</a>
-                    <a href="https://www.kaggle.com/competitions/santa-2025" class="btn-3d btn-secondary">View on Kaggle</a>
-                </div>
-            </div>
-        </div>
+<!-- Skills Section -->
+<section class="section" id="skills">
+<div class="container">
+<div class="section-header">
+<div class="section-label"><i class="fas fa-code"></i> What I Do</div>
+<h2 class="section-title">Skills & Expertise</h2>
+<p class="section-desc">Building end-to-end solutions across web, mobile, and AI/ML domains</p>
+</div>
+<div class="skills-grid">
+<div class="skill-card reveal">
+<div class="skill-icon blue"><i class="fas fa-globe"></i></div>
+<h3>Full Stack Development</h3>
+<p>Building modern web applications with React, Node.js, and cloud services. From responsive frontends to robust APIs.</p>
+<div class="skill-tags"><span class="skill-tag">React</span><span class="skill-tag">Node.js</span><span class="skill-tag">JavaScript</span><span class="skill-tag">Firebase</span></div>
+</div>
+<div class="skill-card reveal reveal-delay-1">
+<div class="skill-icon purple"><i class="fas fa-mobile-alt"></i></div>
+<h3>Mobile App Development</h3>
+<p>Cross-platform and native mobile apps using React Native, Android (Kotlin/Java), and iOS (Swift) development.</p>
+<div class="skill-tags"><span class="skill-tag">React Native</span><span class="skill-tag">Android</span><span class="skill-tag">iOS</span><span class="skill-tag">Kotlin</span></div>
+</div>
+<div class="skill-card reveal reveal-delay-2">
+<div class="skill-icon cyan"><i class="fas fa-brain"></i></div>
+<h3>AI & Machine Learning</h3>
+<p>Developing ML models for classification, forecasting, and optimization. Active Kaggle competitor with proven results.</p>
+<div class="skill-tags"><span class="skill-tag">Python</span><span class="skill-tag">TensorFlow</span><span class="skill-tag">Scikit-learn</span><span class="skill-tag">Pandas</span></div>
+</div>
+<div class="skill-card reveal reveal-delay-3">
+<div class="skill-icon green"><i class="fas fa-server"></i></div>
+<h3>DevOps & Networking</h3>
+<p>Infrastructure, CI/CD pipelines, cloud deployments, and networking fundamentals. Pursuing CCNA certification.</p>
+<div class="skill-tags"><span class="skill-tag">GitHub Actions</span><span class="skill-tag">Netlify</span><span class="skill-tag">Docker</span><span class="skill-tag">Networking</span></div>
+</div>
+</div>
+</div>
+</section>
 
-        <!-- GitHub Activity Section -->
-        <div class="github-section">
-            <h2 class="section-title">GitHub Activity Dashboard</h2>
-            <img src="https://github-readme-stats.vercel.app/api?username=AZEEMAZAM1&show_icons=true&theme=tokyonight" alt="GitHub Stats">
-            <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=AZEEMAZAM1&layout=compact&theme=tokyonight" alt="Top Languages">
-            <img src="https://github-readme-streak-stats.herokuapp.com/?user=AZEEMAZAM1&theme=tokyonight" alt="GitHub Streak">
-            <img src="https://ghchart.rshah.org/AZEEMAZAM1" alt="GitHub Contribution Graph">
-            <br><br>
-            <a href="https://github.com/AZEEMAZAM1" class="btn-3d">View Full GitHub Profile</a>
-        </div>
-    </div>
+<!-- Projects Section -->
+<section class="section" id="projects" style="background:var(--bg-secondary)">
+<div class="container">
+<div class="section-header">
+<div class="section-label"><i class="fas fa-trophy"></i> Portfolio</div>
+<h2 class="section-title">Featured Projects</h2>
+<p class="section-desc">Kaggle competitions and real-world applications showcasing ML and optimization skills</p>
+</div>
+<div class="projects-grid">
 
-    <footer>
-        <p>&copy; 2026 Muhammad Azeem. All rights reserved.</p>
-        <div class="contact-info">
-            <a href="mailto:aforazeem5@gmail.com" class="contact-item">Email: aforazeem5@gmail.com</a>
-            <a href="https://github.com/AZEEMAZAM1" class="contact-item">GitHub</a>
-            <a href="https://linkedin.com/in/muhammad-azeem5" class="contact-item">LinkedIn</a>
-            <a href="https://www.kaggle.com/mohammadazeem1" class="contact-item">Kaggle</a>
-        </div>
-    </footer>
+<!-- Project 1 -->
+<div class="project-card reveal">
+<div class="project-header">
+<span class="project-num p1"><i class="fas fa-rocket"></i> PROJECT 01</span>
+</div>
+<div class="project-body">
+<h3>Spaceship Titanic ML Predictor</h3>
+<div class="project-tech">
+<span class="tech-pill">Python</span><span class="tech-pill">TensorFlow</span><span class="tech-pill">Scikit-learn</span><span class="tech-pill">ML</span>
+</div>
+<p class="project-desc">Developed advanced ML models to predict passenger transportation outcomes. Implemented Random Forest, XGBoost, and Neural Networks with comprehensive feature engineering and hyperparameter tuning.</p>
+<div class="project-stats">
+<div class="stat"><span class="stat-label">Score</span><span class="stat-value">0.80289</span></div>
+<div class="stat"><span class="stat-label">Ranking</span><span class="stat-value">#694</span><span class="stat-sub">out of 2,044 teams</span></div>
+</div>
+<div class="project-links">
+<a href="https://www.kaggle.com/competitions/spaceship-titanic" class="project-link primary" target="_blank"><i class="fab fa-kaggle"></i> View on Kaggle</a>
+</div>
+</div>
+</div>
+
+<!-- Project 2 -->
+<div class="project-card reveal reveal-delay-1">
+<div class="project-header">
+<span class="project-num p2"><i class="fas fa-chart-line"></i> PROJECT 02</span>
+</div>
+<div class="project-body">
+<h3>Store Sales Time Series Forecasting</h3>
+<div class="project-tech">
+<span class="tech-pill">Python</span><span class="tech-pill">Pandas</span><span class="tech-pill">Time Series</span><span class="tech-pill">Regression</span>
+</div>
+<p class="project-desc">Created sophisticated time series forecasting models for grocery store sales. Analyzed temporal patterns, seasonal trends using ARIMA, SARIMA, and gradient boosting with advanced feature engineering.</p>
+<div class="project-stats">
+<div class="stat"><span class="stat-label">Score</span><span class="stat-value">3.10249</span></div>
+<div class="stat"><span class="stat-label">Competed Among</span><span class="stat-value">748</span><span class="stat-sub">teams</span></div>
+</div>
+<div class="project-links">
+<a href="https://www.kaggle.com/competitions/store-sales-time-series-forecasting" class="project-link primary" target="_blank"><i class="fab fa-kaggle"></i> View on Kaggle</a>
+</div>
+</div>
+</div>
+
+<!-- Project 3 -->
+<div class="project-card reveal reveal-delay-2">
+<div class="project-header">
+<span class="project-num p3"><i class="fas fa-tree"></i> PROJECT 03</span>
+</div>
+<div class="project-body">
+<h3>Santa 2025 - Christmas Tree Packing</h3>
+<div class="project-tech">
+<span class="tech-pill">Python</span><span class="tech-pill">C++</span><span class="tech-pill">Simulated Annealing</span><span class="tech-pill">Optimization</span>
+</div>
+<p class="project-desc">Tackled a complex combinatorial optimization problem in this prestigious Kaggle Featured competition. Developed simulated annealing algorithms with custom cooling schedules and visualization tools.</p>
+<div class="project-stats">
+<div class="stat"><span class="stat-label">Best Score</span><span class="stat-value">70.66</span></div>
+<div class="stat"><span class="stat-label">Competed Among</span><span class="stat-value">3,357</span><span class="stat-sub">teams</span></div>
+</div>
+<div class="project-links">
+<a href="https://www.kaggle.com/competitions/santa-2025" class="project-link primary" target="_blank"><i class="fab fa-kaggle"></i> View on Kaggle</a>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- GitHub Activity Section -->
+<section class="section" id="github">
+<div class="container">
+<div class="section-header">
+<div class="section-label"><i class="fab fa-github"></i> Open Source</div>
+<h2 class="section-title">GitHub Activity</h2>
+<p class="section-desc">My contribution graph, stats, and activity across open source projects</p>
+</div>
+<div class="github-grid reveal">
+<img src="https://github-readme-stats.vercel.app/api?username=AZEEMAZAM1&show_icons=true&theme=tokyonight&hide_border=true&bg_color=1e293b&title_color=38bdf8&icon_color=818cf8&text_color=94a3b8" alt="GitHub Stats">
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=AZEEMAZAM1&layout=compact&theme=tokyonight&hide_border=true&bg_color=1e293b&title_color=38bdf8&text_color=94a3b8" alt="Top Languages">
+</div>
+<div class="github-contrib reveal">
+<img src="https://github-readme-streak-stats.herokuapp.com/?user=AZEEMAZAM1&theme=tokyonight&hide_border=true&background=1e293b&ring=38bdf8&fire=818cf8&currStreakLabel=38bdf8" alt="GitHub Streak">
+</div>
+<div class="github-contrib reveal">
+<img src="https://ghchart.rshah.org/38bdf8/AZEEMAZAM1" alt="GitHub Contribution Graph" style="width:100%;filter:brightness(0.9)">
+</div>
+<div style="text-align:center;margin-top:30px" class="reveal">
+<a href="https://github.com/AZEEMAZAM1" class="btn btn-primary" target="_blank"><i class="fab fa-github"></i> View Full GitHub Profile</a>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer id="contact">
+<div class="container">
+<div class="footer-grid">
+<div class="footer-brand">
+<a href="#" class="nav-logo" style="font-size:1.8rem">Muhammad Azeem</a>
+<p>Full Stack Developer & Mobile App Engineer passionate about building innovative solutions with AI/ML. Based in London, UK.</p>
+</div>
+<div>
+<h4 class="footer-heading">Quick Links</h4>
+<ul class="footer-links">
+<li><a href="#home"><i class="fas fa-chevron-right" style="font-size:0.7rem"></i> Home</a></li>
+<li><a href="#skills"><i class="fas fa-chevron-right" style="font-size:0.7rem"></i> Skills</a></li>
+<li><a href="#projects"><i class="fas fa-chevron-right" style="font-size:0.7rem"></i> Projects</a></li>
+<li><a href="#github"><i class="fas fa-chevron-right" style="font-size:0.7rem"></i> GitHub</a></li>
+</ul>
+</div>
+<div>
+<h4 class="footer-heading">Contact</h4>
+<ul class="footer-links">
+<li><a href="mailto:aforazeem5@gmail.com"><i class="fas fa-envelope"></i> aforazeem5@gmail.com</a></li>
+<li><a href="https://github.com/AZEEMAZAM1" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
+<li><a href="https://linkedin.com/in/muhammad-azeem5" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a href="https://www.kaggle.com/mohammadazeem1" target="_blank"><i class="fab fa-kaggle"></i> Kaggle</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<p>&copy; 2026 Muhammad Azeem. All rights reserved.</p>
+<div class="social-links">
+<a href="mailto:aforazeem5@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
+<a href="https://github.com/AZEEMAZAM1" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+<a href="https://linkedin.com/in/muhammad-azeem5" class="social-link" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+<a href="https://www.kaggle.com/mohammadazeem1" class="social-link" target="_blank"><i class="fab fa-kaggle"></i></a>
+</div>
+</div>
+</div>
+</footer>
+
+<!-- Back to top -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
+
+<script>
+// Particles
+(function(){
+const c=document.getElementById('particles');
+for(let i=0;i<30;i++){
+const p=document.createElement('div');
+p.className='particle';
+p.style.left=Math.random()*100+'%';
+p.style.animationDelay=Math.random()*8+'s';
+p.style.animationDuration=(6+Math.random()*6)+'s';
+const colors=['#38bdf8','#818cf8','#22d3ee','#34d399'];
+p.style.background=colors[Math.floor(Math.random()*colors.length)];
+p.style.width=p.style.height=(1+Math.random()*3)+'px';
+c.appendChild(p);
+}
+})();
+
+// Navbar scroll
+window.addEventListener('scroll',function(){
+const nav=document.getElementById('navbar');
+const btn=document.getElementById('backToTop');
+if(window.scrollY>50) nav.classList.add('scrolled');
+else nav.classList.remove('scrolled');
+if(window.scrollY>500) btn.classList.add('visible');
+else btn.classList.remove('visible');
+});
+
+// Active nav link
+const sections=document.querySelectorAll('section[id]');
+window.addEventListener('scroll',function(){
+const scrollY=window.pageYOffset;
+sections.forEach(function(s){
+const top=s.offsetTop-100;
+const h=s.offsetHeight;
+const id=s.getAttribute('id');
+const link=document.querySelector('.nav-links a[href="#'+id+'"]');
+if(link){
+if(scrollY>=top&&scrollY<top+h) link.classList.add('active');
+else link.classList.remove('active');
+}
+});
+});
+
+// Scroll reveal
+const observer=new IntersectionObserver(function(entries){
+entries.forEach(function(e){
+if(e.isIntersecting) e.target.classList.add('active');
+});
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(function(el){observer.observe(el);});
+
+// Close mobile nav on link click
+document.querySelectorAll('.nav-links a').forEach(function(a){
+a.addEventListener('click',function(){
+document.getElementById('navLinks').classList.remove('open');
+document.getElementById('hamburger').classList.remove('active');
+});
+});
+</script>
 </body>
 </html>
