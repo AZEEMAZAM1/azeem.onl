@@ -290,11 +290,10 @@ window.addEventListener('load',function(){setTimeout(function(){document.getElem
 // Custom cursor
 var cursor=document.getElementById('cursor'),dot=document.getElementById('cursorDot');
 document.addEventListener('mousemove',function(e){cursor.style.left=e.clientX-10+'px';cursor.style.top=e.clientY-10+'px';dot.style.left=e.clientX-3+'px';dot.style.top=e.clientY-3+'px';});
-document.querySelectorAll('a,button,.game-cell,.skill-card,.service-card').forEach(function(el){el.addEventListener('mouseenter',function(){cursor.style.transform='scale(1.5)';cursor.style.borderColor='var(--purple)';});el.addEventListener('mouseleave',function(){cursor.style.transform='scale(1)';cursor.style.borderColor='var(--blue)';});});
 // Reading progress
 window.addEventListener('scroll',function(){var h=document.documentElement.scrollHeight-window.innerHeight;var p=(window.scrollY/h)*100;document.getElementById('readingProgress').style.width=p+'%';});
 // Particles
-(function(){var c=document.getElementById('particles');for(var i=0;i<30;i++){var p=document.createElement('div');p.className='particle';p.style.left=Math.random()*100+'%';p.style.animationDelay=Math.random()*8+'s';p.style.animationDuration=(6+Math.random()*6)+'s';var colors=['#38bdf8','#818cf8','#22d3ee','#34d399'];p.style.background=colors[Math.floor(Math.random()*colors.length)];p.style.width=p.style.height=(1+Math.random()*3)+'px';c.appendChild(p);}})();
+
 // Typing effect
 var phrases=['Full Stack Developer & Mobile App Engineer','AI/ML Enthusiast & Kaggle Competitor','Available for Hire on Upwork','React | Python | TensorFlow | React Native'];
 var pi=0,ci=0,del=false;
